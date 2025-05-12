@@ -4,7 +4,12 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            GestionnaireIngredients.ChargerFichier("json_ingredient.json");
+            var Ingredients = GestionnaireIngredients.Ingredients;
+
+            FabriqueNom.ChargerFichiers("nom_famille.txt", "prenom.txt");
+
+
         }
     }
 }

@@ -1,0 +1,122 @@
+[
+  {
+    "nom": "Farine",
+    "calories": 364,
+    "qualite": "Moyenne",
+    "prix": 1.50
+  },
+  {
+    "nom": "Sucre",
+    "calories": 387,
+    "qualite": "Bonne",
+    "prix": 2.00
+  },
+  {
+    "nom": "Oeuf",
+    "calories": 155,
+    "qualite": "Moyenne",
+    "prix": 0.30
+  },
+  {
+    "nom": "Lait",
+    "calories": 42,
+    "qualite": "Bonne",
+    "prix": 1.00
+  },
+  {
+    "nom": "Beurre",
+    "calories": 717,
+    "qualite": "Bonne",
+    "prix": 2.50
+  },
+  {
+    "nom": "Huile d'olive",
+    "calories": 884,
+    "qualite": "Excellente",
+    "prix": 5.00
+  },
+  {
+    "nom": "Sel",
+    "calories": 0,
+    "qualite": "Bonne",
+    "prix": 0.20
+  },
+  {
+    "nom": "Poivre",
+    "calories": 251,
+    "qualite": "Bonne",
+    "prix": 0.50
+  },
+  {
+    "nom": "Ail",
+    "calories": 149,
+    "qualite": "Moyenne",
+    "prix": 1.00
+  },
+  {
+    "nom": "Oignon",
+    "calories": 44,
+    "qualite": "Bonne",
+    "prix": 0.50
+  },
+  {
+    "nom": "Tomate",
+    "calories": 18,
+    "qualite": "Bonne",
+    "prix": 1.50
+  },
+  {
+    "nom": "Poivron",
+    "calories": 27,
+    "qualite": "Bonne",
+    "prix": 1.50
+  },
+  {
+    "nom": "Poulet",
+    "calories": 165,
+    "qualite": "Bonne",
+    "prix": 4.00
+  },
+  {
+    "nom": "Boeuf",
+    "calories": 250,
+    "qualite": "Bonne",
+    "prix": 8.00
+  },
+  {
+    "nom": "Poisson",
+    "calories": 90,
+    "qualite": "Bonne",
+    "prix": 5.00
+  },
+  {
+    "nom": "Pâtes",
+    "calories": 131,
+    "qualite": "Bonne",
+    "prix": 1.50
+  },
+  {
+    "nom": "Riz",
+    "calories": 130,
+    "qualite": "Bonne",
+    "prix": 1.00
+  },
+  {
+    "nom": "Pain",
+    "calories": 265,
+    "qualite": "Bonne",
+    "prix": 2.00
+  },
+  {
+    "nom": "Fromage",
+    "calories": 402,
+    "qualite": "Bonne",
+    "prix": 5.00
+  },
+  {
+    "nom": "Chocolat noir",
+    "calories": 604,
+    "qualite": "Excellente",
+    "prix": 3.50
+  }
+]
