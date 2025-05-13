@@ -42,6 +42,5 @@ namespace projet
             return temperaments[rand.Next(temperaments.Length)];
         }
 
-
     }
 }

@@ -11,8 +11,13 @@ namespace projet
         public string Nom { get; set; }
         public double Prix { get; set; }
         public string Qualite { get; set; }
-        public int Calories {  get; set; } 
+        public int Calories {  get; set; }
 
 
+        public override string ToString()
+        {
+            return $"Nom : {Nom} | Prix : {Prix} | Qualité : {Qualite} | Calories : {Calories}";
+        }
     }
+
 }

@@ -12,14 +12,18 @@ namespace projet
 
         public static void GenererClients(int nombre)
         {
+            //vide la liste actuelle de clients
             Clients.Clear();
 
+            //fabrique des nouveaux clients et les ajoute à la liste de clients
             for (int i = 0; i < nombre; i++)
             {
                 string nom = FabriqueNom.GeNomComplet();
                 string temperament = FabriqueNom.GetTemperament();
                 Clients.Add(new Client(nom, temperament));
+
             }
         }
+
     }
 }
