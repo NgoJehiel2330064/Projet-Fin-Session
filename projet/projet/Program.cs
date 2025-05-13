@@ -5,6 +5,7 @@
         static void Main(string[] args)
         {
             GestionnaireIngredients.ChargerFichier("json_ingredient.json");
+
             FabriqueNom.ChargerFichiers("nom_famille.txt", "prenom.txt");
 
             Console.WriteLine("Liste des ingrédients :\n");
