@@ -18,6 +18,9 @@
 
             GestionnaireClients.GenererClients(5);
 
+            Console.WriteLine();
+            Console.WriteLine();
+
             for (int i = 0; i < GestionnaireClients.Clients.Count; i++)
             {
                 Client client = GestionnaireClients.Clients[i];
