@@ -7,8 +7,9 @@
             GestionnaireIngredients.ChargerFichier("json_ingredient.json");
             var Ingredients = GestionnaireIngredients.Ingredients;
 
-            FabriqueNom.ChargerFichiers("nom_famille.txt", "prenom.txt");
 
+           for(int i = 0; i < 10; i++)
+            FabriqueNom.ChargerFichiers("nom_famille.txt", "prenom.txt");
 
         }
     }
