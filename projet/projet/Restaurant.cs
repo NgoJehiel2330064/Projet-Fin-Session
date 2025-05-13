@@ -10,7 +10,7 @@ namespace projet
     public enum Statut
     {
         Ouvert,
-        Fermé
+        Ferme
     }
     public class Restaurant
     {
@@ -19,7 +19,7 @@ namespace projet
         public List<Plat> MenuClient { get; set; }
         public List<Plat> PlatsAchetes { get; set; }
         public List<Plat> PlatsPouvantEtreAchetes { get; set; }
-        public double Budget {  get; set; }
+        public double Budget { get; set; }
 
 
 
@@ -45,6 +45,7 @@ namespace projet
         /// </summary>
         public void AfficherMenuGestion()
         {
+            Console.Clear();
             bool veutQuitterMenu = false;
             do
             {
@@ -104,17 +105,27 @@ namespace projet
         public void SOccuperDesClients(List<Plat> menuClient)
         {
             double montantTotalDebourseParLesClients = 0;
+            List<Plat> platsCommandes = new List<Plat>();
             //afficher le nombre de clients présents
             Console.WriteLine($"Le restaurant {Nom} compte actuellement {GestionnaireClients.Clients.Count} client(s)");
 
             //Servir tous le monde automatiquement
-            
-                for (int i = 0; i < GestionnaireClients.Clients.Count; i++)
+            Console.WriteLine("Le service automatique des clients est lancé");
+            for (int i = 0; i < GestionnaireClients.Clients.Count; i++)
+            {
+                montantTotalDebourseParLesClients += ServirClient(GestionnaireClients.Clients[i]);
+                foreach (Plat plat in GestionnaireClients.Clients[i].Choix)
                 {
-                    montantTotalDebourseParLesClients += ServirClient(GestionnaireClients.Clients[i]);
-                    
+                    platsCommandes.Add(plat);
                 }
+            }
+            //supprimer les doublons dans la liste de plats commandés 
             //afficher les plats commandés par les clients et montant total déboursé par les clients
+            Console.WriteLine($"Liste des plats commandés par les clients:\n");
+            foreach(Plat plat in platsCommandes)
+                Console.WriteLine($" ~" + plat + "\n");
+
+            Console.WriteLine($"Au total, les clients ont déboursé {montantTotalDebourseParLesClients}$");
 
         }
 
@@ -125,13 +136,22 @@ namespace projet
             double sommeDeboursee = 0;
             //on parcours la liste des plats commandés par le client
             for (int i = 0; i < client.Choix.Count; i++)
-                 sommeDeboursee += ServirUnPlat(client.Choix[i]);
+            {
+                double montantVerse = ServirUnPlat(client.Choix[i]);
+                if (montantVerse == 0)
+                    tousLesPlatsDuClientServis = false;
+                else
+                    sommeDeboursee += montantVerse;
+            }
             //on verifie si tous les plats du client ont ete servis
-            if(tousLesPlatsDuClientServis)
+            if (tousLesPlatsDuClientServis)
             {
                 //on retire le client servi de la liste des clients
+                Console.WriteLine($"Le client {client.NomComplet} a recu tous ses plats");
                 GestionnaireClients.Clients.Remove(client);
             }
+            else
+                Console.WriteLine($"Le client {client.NomComplet} n'a pas recu tous ses plats");
             return sommeDeboursee;
         }
 
@@ -142,7 +162,7 @@ namespace projet
 
             foreach (Ingredient ingredient in plat.Ingredients)
             {
-                //on verifie pour chaque ingredient si le gestionnaire d'iongredients dispose d'assez d'ingredients en réserve
+                //on verifie pour chaque ingredient si le gestionnaire d'ingredients dispose d'assez d'ingredients en réserve
                 if (GestionnaireIngredients.QuantiteIngredients[GestionnaireIngredients.Ingredients.IndexOf(ingredient)] < 1)
                 {
                     disposeAssezIngredients = false;
@@ -168,7 +188,7 @@ namespace projet
             }
             else
             {
-                throw new Exception($"Le restaurant ne dispose pas d'assez d'ingrédients({listeIngredientsFinis}) pour préparer le plat {plat.Nom}");
+                Console.WriteLine($"Le restaurant ne dispose pas d'assez d'ingrédients({listeIngredientsFinis}) pour préparer le plat {plat.Nom}");
                 return 0;
             }
         }
@@ -205,7 +225,7 @@ namespace projet
                 }
 
                 if (nombreEntre >= 1 && nombreEntre <= MenuClient.Count)
-                { 
+                {
                     MenuClient.Remove(MenuClient[nombreEntre - 1]);
                     Console.WriteLine("Le plat a été retiré du menu client");
                 }
@@ -217,7 +237,7 @@ namespace projet
                 //on crée une nouvelle liste contenant uniquement les plats qu'on peut ajouter au menu client
                 List<Plat> PlatsAjoutablesAuMenu = new List<Plat>();
 
-                for(int i = 0; i < PlatsAchetes.Count; i++)
+                for (int i = 0; i < PlatsAchetes.Count; i++)
                 {
                     //la liste de plats ajoutable au menu contient les plats dont la recette est achetée
 
@@ -279,18 +299,18 @@ namespace projet
                     Console.WriteLine("Le plat a été ajouté à la liste de plats achetés");
                     //on retire le plat à la liste des plats pouvant être achetés
                     PlatsPouvantEtreAchetes.Remove(PlatsPouvantEtreAchetes[nombreEntre - 1]);
-                    
+
                 }
                 else
                 {
-                    Console.WriteLine($"Le reataurant {Nom} ne dispose pas d'assez de fonds pour acheter la recette du plat {PlatsPouvantEtreAchetes[nombreEntre - 1].Nom}");
+                    Console.WriteLine($"Le restaurant {Nom} ne dispose pas d'assez de fonds pour acheter la recette du plat {PlatsPouvantEtreAchetes[nombreEntre - 1].Nom}");
                 }
             }
             else
             {
                 Console.WriteLine("Vous avez entré un nombre invalide");
             }
-            
+
         }
 
 
@@ -305,7 +325,7 @@ namespace projet
             Console.WriteLine("Voici la liste des ingrédients, entrer le numero correspondant à celui que vous voulez acheter");
             for (int i = 0; i < GestionnaireIngredients.Ingredients.Count; i++)
             {
-                Console.WriteLine($"({i+1}) {GestionnaireIngredients.Ingredients[i].Nom} quantité actuelle: {GestionnaireIngredients.QuantiteIngredients[i]}");
+                Console.WriteLine($"({i + 1}) {GestionnaireIngredients.Ingredients[i].Nom} quantité actuelle: {GestionnaireIngredients.QuantiteIngredients[i]}");
 
             }
             //s'assurer que l'utilisateur entre un numéro correspondant à un ingredient
@@ -313,8 +333,8 @@ namespace projet
             do
             {
                 int.TryParse(Console.ReadLine(), out numeroIngredient);
-            }while( numeroIngredient < 1 || numeroIngredient > GestionnaireIngredients.Ingredients.Count);
-            
+            } while (numeroIngredient < 1 || numeroIngredient > GestionnaireIngredients.Ingredients.Count);
+
             Console.WriteLine("Entrer la quantité à acheter");
             int.TryParse(Console.ReadLine(), out int quantiteIngredientAAcheter);
 
