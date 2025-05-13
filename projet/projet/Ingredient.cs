@@ -10,7 +10,8 @@ namespace projet
     {
         public string Nom { get; set; }
         public double Prix { get; set; }
-        public string Rarete { get; set; }
+        public string Qualite { get; set; }
+        public int Calories {  get; set; } 
 
 
     }
