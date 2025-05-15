@@ -28,24 +28,28 @@
 
 
             //Création du restaurant 
-            Restaurant monRestaurant = new Restaurant("Nordic", 100000);
+            Restaurant monRestaurant = new Restaurant("Nordic", 10000);
 
             //générer une liste de plats achetables
             List<Ingredient> ingredients = new List<Ingredient>();
             for (int i = 1; i <= 5; i++)
             {
                 ingredients.Clear();
-                for(int j = 0; j < 5; j++)
-                    ingredients.Add(GestionnaireIngredients.Ingredients[rand.Next(0,GestionnaireIngredients.Ingredients.Count)]);
-                monRestaurant.PlatsPouvantEtreAchetes.Add(new Plat("Plat" + i, 25, 5, ingredients));
+                int nombreIngredientsNecessaire = rand.Next(1, 11);
+                for(int j = 0; j < nombreIngredientsNecessaire; j++)
+                { int numeroIngredient = rand.Next(0, GestionnaireIngredients.Ingredients.Count);
+                  if(!ingredients.Contains(GestionnaireIngredients.Ingredients[numeroIngredient]))
+                    ingredients.Add(GestionnaireIngredients.Ingredients[numeroIngredient]); 
+                }
+                monRestaurant.PlatsPouvantEtreAchetes.Add(new Plat("Plat" + i, 25, ingredients));
+
             }
 
-            //Generation des clients ainsi que de leurs commandes
-            GestionnaireClients.GenererClients(5);
-            for (int i = 0; i < GestionnaireClients.Clients.Count; i++)
-                GestionnaireClients.Clients[i].Commander(monRestaurant.MenuClient);
+            
             Console.WriteLine();
             Console.WriteLine();
+
+            monRestaurant.AfficherMenuGestion();
 
         }
     }
