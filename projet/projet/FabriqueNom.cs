@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace projet
 {
+    
     public static class FabriqueNom
     {
         static List<string> Noms = new List<string>();
@@ -36,9 +37,9 @@ namespace projet
             return $"{prenom} {nom}";   
         }
 
-        public static string GetTemperament()
+        public static TypeTemperemment GetTemperament()
         {
-            string[] temperaments = { "Calme", "Pressé", "Impulsif", "Patient", "Indécis" };
+            TypeTemperemment[] temperaments = { TypeTemperemment.Calme, TypeTemperemment.Presse, TypeTemperemment.Impulsif, TypeTemperemment.Patient, TypeTemperemment.Indécis };
             return temperaments[rand.Next(temperaments.Length)];
         }
 

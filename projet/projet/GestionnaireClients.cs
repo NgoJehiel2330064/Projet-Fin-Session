@@ -19,7 +19,7 @@ namespace projet
             for (int i = 0; i < nombre; i++)
             {
                 string nom = FabriqueNom.GeNomComplet();
-                string temperament = FabriqueNom.GetTemperament();
+                TypeTemperemment temperament = FabriqueNom.GetTemperament();
                 Clients.Add(new Client(nom, temperament));
 
             }

@@ -13,7 +13,14 @@ namespace projet
         public string Qualite { get; set; }
         public int Calories {  get; set; }
 
-        //on apas besoin de constructeur d'ingredients ici
+        public Ingredient(string nom,  double prix, string qualite, int calories)
+        {
+            Nom = nom;
+            Prix = prix;
+            Qualite = qualite;
+            Calories = calories;
+        }
+
         public override string ToString()
         {
             return $"Nom : {Nom} | Prix : {Prix} | Qualité : {Qualite} | Calories : {Calories}";
