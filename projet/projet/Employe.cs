@@ -8,10 +8,11 @@ namespace projet
 {
     public class Employe
     {
-        public string Nom {  get; set; }
+        public string Nom { get; set; }
         public int Rarete { get; set; }
         public string Description { get; set; }
         public bool BonusActive { get; private set; }
+
         static Random rand = new Random();
 
         public Employe(string nom) 
@@ -111,8 +112,7 @@ namespace projet
             ingredients.Add(GestionnaireIngredients.Ingredients[17]);
             ingredients.Add(GestionnaireIngredients.Ingredients[18]);
             ingredients.Add(GestionnaireIngredients.Ingredients[19]);
-            restaurant.PlatsAchetes.Add(new Plat("Plat spécial bonus",0, ingredients));
-
+            restaurant.PlatsAchetes.Add(new Plat("Plat spécial bonus " + Nom,0, ingredients));
             Console.WriteLine($"Grace à l'employé {Nom}, une recette très rare figure désormais dans la liste des plats achetés par le restaurant");
 
 

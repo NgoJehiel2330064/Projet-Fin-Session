@@ -30,12 +30,16 @@
             //Création du restaurant 
             Restaurant monRestaurant = new Restaurant("Nordic", 10000);
 
+            //Creation du simulateur
+            Simulateur simulateur = new Simulateur(monRestaurant);
+
             //générer une liste de plats achetables
             List<Ingredient> ingredients = new List<Ingredient>();
             for (int i = 1; i <= 5; i++)
             {
                 ingredients.Clear();
                 int nombreIngredientsNecessaire = rand.Next(1, 11);
+
                 for(int j = 0; j < nombreIngredientsNecessaire; j++)
                 { int numeroIngredient = rand.Next(0, GestionnaireIngredients.Ingredients.Count);
                   if(!ingredients.Contains(GestionnaireIngredients.Ingredients[numeroIngredient]))
@@ -49,7 +53,7 @@
             Console.WriteLine();
             Console.WriteLine();
 
-            monRestaurant.AfficherMenuGestion();
+            simulateur.AfficherMenuGestion();
 
         }
     }
