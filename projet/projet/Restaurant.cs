@@ -21,6 +21,7 @@ namespace projet
         public List<Plat> MenuClient { get; set; }
         public List<Plat> PlatsAchetes { get; set; }
         public List<Plat> PlatsPouvantEtreAchetes { get; set; }
+        public List<Employe> Employes { get; set; }
         public int NombreMaxClient { get; set; }
         public double Budget { get; set; }
         static Random rand = new Random();
@@ -30,12 +31,14 @@ namespace projet
         public Restaurant(string nom, double budget)
         {
             Nom = nom;
-
             //par défaut le restaurant est ouvert à sa création
             Statut = Statut.Ouvert;
+
             PlatsPouvantEtreAchetes = new List<Plat>();
             MenuClient = new List<Plat>();
             PlatsAchetes = new List<Plat>();
+            Employes = new List<Employe>();
+
             Budget = budget;
             NombreMaxClient = 20;
 
@@ -71,6 +74,9 @@ namespace projet
 
                 int.TryParse(Console.ReadLine(), out int nombreEntre);
 
+                Console.WriteLine();
+                Console.WriteLine();
+
                 switch (nombreEntre)
                 {
                     case 1:
@@ -89,6 +95,9 @@ namespace projet
                         CommanderIngredient();
                         break;
                     case 6:
+                        EngagerEmploye();
+                        break;
+                    case 7:
                         veutQuitterMenu = true;
                         break;
                     default:
@@ -103,7 +112,39 @@ namespace projet
         }
 
 
+        public void EngagerEmploye()
+        {
+            string[] noms = {"Bouchard", "Brassard", "Perron", "Dupont", "Cote", "Morin", "Lapointe", "Larouche", "Gaudreault", "Pineault", "Boivin", "Potvin", "Lavoie", "Simard", "Dallaire"};
+            string[] prenoms = {"Réal", "Annie-Claude", "Rebecca", "Nicolas", "Laura", "Michel", "Kim", "Cindy", "Jeffrey", "Hendrick", "Laurent", "Kevin", "Félix", "Nathan","Sarah"};
+            
+            //on génère une liste de postulants
 
+            Employe[] postulants = new Employe[5];
+            for(int i = 0;  i < postulants.Length; i++)
+            {
+                postulants[i] = new Employe(prenoms[rand.Next(0,prenoms.Length)] + " " + noms[rand.Next(0, noms.Length)]);
+            }
+
+            Console.WriteLine($"Voici la liste des employés qui ont actuellement postulé au restaurant {Nom}:\n");
+            for(int i = 0; i < postulants.Length; i++)
+            {
+                Console.WriteLine($"({i + 1}) " + postulants[i]);
+            }
+            Console.WriteLine("Entrer le numero de celui que vous voulez engager");
+
+            int.TryParse(Console.ReadLine(), out int numeroEmployeEngage);
+
+            if(numeroEmployeEngage > 0 && numeroEmployeEngage <= postulants.Length)
+            {
+                postulants[numeroEmployeEngage - 1].ActiverBonus();
+                //to do : construire un simulateur afin que le activerBonus de l'employé puisse prendre en paramètre le restaurant 
+                Employes.Add(postulants[numeroEmployeEngage - 1]); 
+
+            }
+            else
+                Console.WriteLine("Vous avez entré un numero invalide");
+
+        }
 
 
 
@@ -517,4 +558,4 @@ namespace projet
             return $"Nom : {Nom} | Statut : {Statut} |  Budget : {Budget}";
         }
     }
-}//todo : voir comment emp¸echer un plat d'avoir deux ingredients pareils
+}

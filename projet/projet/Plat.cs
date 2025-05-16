@@ -32,11 +32,11 @@ namespace projet
             //on détermine la rareté en fonction du prix de vente
             if (PrixVente < 5)
                 Rarete = 1;
-            else if (PrixVente < 10)
-                Rarete = 2;
             else if (PrixVente < 15)
+                Rarete = 2;
+            else if (PrixVente < 30)
                 Rarete = 3;
-            else if (PrixVente < 20)
+            else if (PrixVente < 50)
                 Rarete = 4;
             else
                 Rarete = 5;

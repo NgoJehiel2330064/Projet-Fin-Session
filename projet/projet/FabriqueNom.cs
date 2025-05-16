@@ -11,6 +11,7 @@ namespace projet
     {
         static List<string> Noms = new List<string>();
         static List<string> Prenoms = new List<string>();
+        public static bool CliensPlusPatients = false;
         static Random rand = new Random();
 
         public static void ChargerFichiers(string nom, string prenom)
@@ -39,8 +40,16 @@ namespace projet
 
         public static TypeTemperemment GetTemperament()
         {
-            TypeTemperemment[] temperaments = { TypeTemperemment.Calme, TypeTemperemment.Presse, TypeTemperemment.Impulsif, TypeTemperemment.Patient, TypeTemperemment.Indécis };
-            return temperaments[rand.Next(temperaments.Length)];
+            if(!CliensPlusPatients)
+            {
+                TypeTemperemment[] temperaments = { TypeTemperemment.Calme, TypeTemperemment.Presse, TypeTemperemment.Impulsif, TypeTemperemment.Patient, TypeTemperemment.Indécis };
+                return temperaments[rand.Next(temperaments.Length)];
+            }
+            else
+            {
+                TypeTemperemment[] temperaments = { TypeTemperemment.Calme, TypeTemperemment.Patient, TypeTemperemment.Indécis };
+                return temperaments[rand.Next(temperaments.Length)];
+            }
         }
 
     }
