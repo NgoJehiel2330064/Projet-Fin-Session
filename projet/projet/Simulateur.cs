@@ -72,7 +72,7 @@ namespace projet
                 Console.WriteLine($"\n\nPeser sur une touche pour continuer");
                 Console.ReadKey();
             } while (!veutQuitterMenu);
-            Console.WriteLine("******************** La Simulation est terminée, Merci d'avoir participé ********************");
+            Console.WriteLine("******************** La  Simulation est terminée, Merci d'avoir participé ********************");
         }
 
 
