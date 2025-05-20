@@ -8,7 +8,7 @@
         {
             GestionnaireIngredients.ChargerFichier("json_ingredient.json");
 
-            FabriqueNom.ChargerFichiers("nom_famille.txt", "prenom.txt");
+            FabriquerClient.ChargerFichiers("nom_famille.txt", "prenom.txt");
 
             //on vérifie que les noms des clients et la liste d'ingredients sont bien chargés 
             /*Console.WriteLine("Liste des ingrédients :\n");

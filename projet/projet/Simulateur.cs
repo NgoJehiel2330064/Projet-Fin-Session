@@ -164,15 +164,28 @@ namespace projet
 
             bool tousLesPlatsDuClientServis = true;
             double sommeDeboursee = 0;
+            bool[] platsServis = new bool[client.Choix.Count];
             //on parcours la liste des plats commandés par le client
             for (int i = 0; i < client.Choix.Count; i++)
             {
+                //on part du principe que chaque plat du client doit lui etre servi
+                platsServis[i] = true;
+
                 double montantVerse = ServirUnPlat(client.Choix[i]);
                 if (montantVerse == 0)
+                {
                     tousLesPlatsDuClientServis = false;
+                    //on marque false dans la case correspondante de platsServis
+                    platsServis[i] = false;
+
+                }
                 else
                     sommeDeboursee += montantVerse;
             }
+            //on retire de la liste des commandes du client les plats qui lui ont déjà été servis
+            for (int i = platsServis.Length - 1; i >= 0; i--)
+                if (platsServis[i] == true)
+                    client.Choix.RemoveAt(i);
             //on verifie si tous les plats du client ont ete servis
             if (tousLesPlatsDuClientServis || client.Temperament == TypeTemperemment.Presse || client.Temperament == TypeTemperemment.Impulsif)
             {

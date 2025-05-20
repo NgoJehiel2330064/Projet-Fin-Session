@@ -91,7 +91,7 @@ namespace projet
                     GestionnaireClients.Clients[i].Temperament = TypeTemperemment.Patient;
             }
             //on fait en sorte que tous les futurs clients soient soient soit calme, soit indécis soit patient
-            FabriqueNom.CliensPlusPatients = true;
+            FabriquerClient.CliensPlusPatients = true;
 
             Console.WriteLine($"Grace à l'employé {Nom}, les clients sont désormais plus patients");
 

@@ -18,8 +18,8 @@ namespace projet
             //fabrique des nouveaux clients et les ajoute à la liste de clients
             for (int i = 0; i < nombre; i++)
             {
-                string nom = FabriqueNom.GeNomComplet();
-                TypeTemperemment temperament = FabriqueNom.GetTemperament();
+                string nom = FabriquerClient.GeNomComplet();
+                TypeTemperemment temperament = FabriquerClient.GetTemperament();
                 Clients.Add(new Client(nom, temperament));
 
             }
