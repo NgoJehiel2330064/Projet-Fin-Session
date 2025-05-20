@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace projet
 {
     
-    public static class FabriqueNom
+    public static class FabriquerClient
     {
         static List<string> Noms = new List<string>();
         static List<string> Prenoms = new List<string>();
