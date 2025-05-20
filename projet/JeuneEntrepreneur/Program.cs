@@ -5,7 +5,8 @@
         public static Random rand = new Random();
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Simulateur simulateur = new Simulateur();
+            simulateur.Demarrer();
         }
     }
 }

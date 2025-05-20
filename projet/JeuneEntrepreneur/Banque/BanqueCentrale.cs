@@ -9,9 +9,15 @@ using JeuneEntrepreneur;
 
 namespace JeuneEntrepreneur.Banque
 {
-    public class Banque
+    public class BanqueCentrale
     {
-        public int TauxInteretParDefaut => Program.rand.Next(3, 10); // Pourrait être fixe aussi
+        public int TauxInteretParDefaut { get; private set; }
+
+        public BanqueCentrale() 
+        {
+            // Génère un taux d’intérêt unique entre 3% et 9%
+            TauxInteretParDefaut = Program.rand.Next(3, 10);
+        }
 
         // Donne un prêt si possible
         public void AccorderPret(Joueur joueur, int montant, Actif garantie)

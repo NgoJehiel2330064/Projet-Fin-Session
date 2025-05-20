@@ -31,18 +31,20 @@ namespace JeuneEntrepreneur
             PretEnCours = null;
         }
 
-        public void AfficherActifs()
+        public string AfficherActifs()
         {
             Console.WriteLine();
+            string info = string.Empty;
             if (Actifs.Count == 0)
             {
-                Console.WriteLine($"Vous n'avez aucun actif pour le moment");
+                info += $"Vous n'avez aucun actif pour le moment";
             }
             else
             {
                 foreach (var actif in Actifs)
-                    Console.WriteLine($"- {actif}\n");
+                    info +=  $"- {actif}\n";
             }
+            return info;
         }
 
         public void AjouterActif(Actif actif)
@@ -99,7 +101,7 @@ namespace JeuneEntrepreneur
 
         public override string ToString()
         {
-            return $"Nom : {Nom} | Capitale disponible : {Capital} \n Voici la listes de vos actifs : {AfficherActifs} ";
+            return $"Nom : {Nom} | Capitale disponible : {Capital} \n Voici la listes de vos actifs : \n{AfficherActifs()} ";
         }
 
 
