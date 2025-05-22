@@ -19,7 +19,7 @@ namespace JeuneEntrepreneur
             Console.Write("Entrez votre nom : ");
             string nom = Console.ReadLine();
             Console.Write("Entrez votre capital : ");
-            int capital = Convert.ToInt32(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out int capital);
 
 
 
@@ -43,7 +43,7 @@ namespace JeuneEntrepreneur
                 Console.WriteLine("10. Vendre un actif");
                 Console.WriteLine("0. Quitter");
                 Console.Write("\nVotre choix : ");
-                int choix = Convert.ToInt32(Console.ReadLine());
+                int.TryParse(Console.ReadLine(),out int choix);
 
                 switch (choix)
                 {
@@ -159,8 +159,14 @@ namespace JeuneEntrepreneur
 
         private void AcheterVoiture()
         {
-            Console.Write("\nNom (usage interne) de la voiture : ");
-            string nom = Console.ReadLine();
+            
+
+            Console.Write("Marque : ");
+            string marque = Console.ReadLine();
+            string nom = marque;
+
+            Console.Write("Année : ");
+            int modele = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Prix : ");
             if (!int.TryParse(Console.ReadLine(), out int prix))
@@ -168,12 +174,6 @@ namespace JeuneEntrepreneur
                 Console.WriteLine(" Prix invalide.");
                 return;
             }
-
-            Console.Write("Marque : ");
-            string marque = Console.ReadLine();
-
-            Console.Write("Année : ");
-            int modele = Convert.ToInt32(Console.ReadLine());
 
             if (Joueur.Depenser(prix))
             {

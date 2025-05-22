@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JeuneEntrepreneur.Actifs;
 using JeuneEntrepreneur.Banque;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace JeuneEntrepreneur
 {
@@ -34,15 +35,11 @@ namespace JeuneEntrepreneur
         public string AfficherActifs()
         {
             Console.WriteLine();
-            string info = string.Empty;
-            if (Actifs.Count == 0)
-            {
-                info += $"Vous n'avez aucun actif pour le moment";
-            }
-            else
+            string info = $"Voici la listes de vos actifs: \n";
+            if (Actifs.Count != 0)
             {
                 foreach (var actif in Actifs)
-                    info +=  $"- {actif}\n";
+                    info += $"- {actif}\n";
             }
             return info;
         }
@@ -101,7 +98,9 @@ namespace JeuneEntrepreneur
 
         public override string ToString()
         {
-            return $"Nom : {Nom} | Capitale disponible : {Capital} \n Voici la listes de vos actifs : \n{AfficherActifs()} ";
+            string pret = PretEnCours == null ? "Vous n'avez aucun prêt bancaire pour le moment." : $"{PretEnCours.ToString()}";
+            string actif = Actifs.Count == 0 ? "Vous n'avez aucun actif pour le moment." : $"{AfficherActifs().ToString()}";
+            return $"Nom : {Nom} | Capitale disponible : {Capital} $ \n {actif} \n {pret}";
         }
 
 
